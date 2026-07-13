@@ -1,4 +1,4 @@
-name: Daily Data Update and Pages Deploy
+name: Daily Data Update
 
 on:
   push:
@@ -13,11 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -50,24 +45,4 @@ jobs:
             git commit -m "Refresh admission data [skip ci]"
             git push
           fi
-
-      - name: Prepare public site
-        run: |
-          mkdir public-site
-          cp index.html styles.css app.js engine.js public-site/
-          cp -R data public-site/data
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public-site
-
-      - name: Deploy Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
 
