@@ -1,8 +1,10 @@
 import { createExcelEngine } from "./engine.js";
 
-const DATA_URL = "./data/admissions.json";
-const AUDIT_URL = "./data/audit.json";
-const INTEGRITY_URL = "./data/integrity.json";
+const DATA_BASE_URL =
+  "https://raw.githubusercontent.com/geekr2013/univ-admission-possibility/main/data";
+const DATA_URL = `${DATA_BASE_URL}/admissions.json`;
+const AUDIT_URL = `${DATA_BASE_URL}/audit.json`;
+const INTEGRITY_URL = `${DATA_BASE_URL}/integrity.json`;
 
 const tiers = [
   { id: "all", label: "모든 대학", schools: [] },
