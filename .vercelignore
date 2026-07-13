@@ -1,0 +1,6 @@
+.source-data
+.codex
+.git
+node_modules
+scripts/__pycache__
+
