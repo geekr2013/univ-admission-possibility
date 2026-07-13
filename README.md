@@ -2,6 +2,8 @@
 
 YMABI/SearchUnivMajorPossibility의 공개 엑셀 데이터를 웹에서 쉽게 볼 수 있도록 만든 MVP입니다.
 
+**공개 사이트:** https://violet-sun-violet.pagey.site/
+
 ## 주요 기능
 
 - 국어, 수학 선택과목, 영어, 한국사, 탐구 2과목, 제2외국어/한문 성적 입력
@@ -23,7 +25,7 @@ python scripts/extract_data.py
 
 ## 자동 업데이트
 
-GitHub Actions가 매일 04:00 KST에 원본 데이터를 다시 받아 무료 GitHub Pages에 재배포합니다. 별도 Secret은 필요하지 않습니다.
+GitHub Actions가 매일 04:00 KST에 원본 데이터와 검증 보고서를 다시 만듭니다. 공개 사이트는 GitHub의 최신 데이터를 직접 읽으므로 별도 재배포가 필요하지 않으며, 노트북이 꺼져 있어도 실행됩니다. 별도 Secret은 필요하지 않습니다.
 
 자세한 설정은 `docs/auto-update.md`를 참고하세요.
 
