@@ -1,0 +1,10 @@
+.source-data/
+.codex/pytools/
+.analysis/
+node_modules/
+dist/
+.vercel/
+*.pyc
+
+.vercel
+
