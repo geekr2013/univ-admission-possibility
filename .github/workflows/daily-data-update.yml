@@ -54,20 +54,20 @@ jobs:
           fi
 
           node scripts/build_standalone.mjs
-          response_file="$RUNNER_TEMP/pagedrop-response.json"
+          response_file="$RUNNER_TEMP/pagey-response.json"
           http_code=$(curl --silent --show-error \
-            --request POST "https://pagedrop.dev/api/v1/sites" \
+            --request POST "https://pagey.site/api/public/sites/" \
             --form "file=@artifacts/univ-admission-standalone.html;type=text/html" \
+            --form "title=University Admission Possibility" \
             --output "$response_file" \
             --write-out "%{http_code}")
 
-          if [ "$http_code" != "201" ]; then
-            node -e "const fs=require('fs'); const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); console.error(r.message || 'Public deployment failed');" "$response_file"
+          if [ "$http_code" != "200" ] && [ "$http_code" != "201" ]; then
+            node -e "const fs=require('fs'); const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); console.error(r.error || 'Public deployment failed');" "$response_file"
             exit 1
           fi
 
-          node scripts/record_pagedrop_deployment.mjs "$response_file"
-          rm -f "$response_file"
+          node scripts/record_pagey_deployment.mjs "$response_file"
           git add data/deployment.json
           git commit -m "Record public deployment [skip ci]"
           git push
