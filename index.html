@@ -3,123 +3,119 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>紐⑥쓽怨좎궗 ?뺤떆 ?⑷꺽瑜???쒕낫??/title>
+    <title>모의고사 정시 합격률 대시보드</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app-shell">
       <aside class="input-panel">
         <div class="brand-block">
-          <p class="eyebrow">?뺤떆 吏??媛?μ꽦 MVP</p>
-          <h1>紐⑥쓽怨좎궗 ?깆쟻?쇰줈 ?숆낵蹂??⑷꺽瑜?蹂닿린</h1>
-          <p>YMABI 怨듦컻 ?묒? ?곗씠?곕? 諛뷀깢?쇰줈 而??鍮?媛?μ꽦??鍮좊Ⅴ寃?異붿젙?⑸땲??</p>
+          <p class="eyebrow">정시 지원 가능성 MVP</p>
+          <h1>모의고사 성적으로 학과별 합격률 보기</h1>
+          <p>YMABI 공개 엑셀 데이터를 바탕으로 컷 대비 가능성을 빠르게 추정합니다.</p>
         </div>
 
         <section class="control-section">
-          <h2>?쒗뿕 ?뺣낫</h2>
+          <h2>시험 정보</h2>
           <div class="field-grid three">
-            <label>?꾨룄<select id="mockYear"></select></label>
-            <label>?숇뀈<select id="mockGrade"></select></label>
-            <label>??select id="mockMonth"></select></label>
+            <label>년도<select id="mockYear"></select></label>
+            <label>학년<select id="mockGrade"></select></label>
+            <label>월<select id="mockMonth"></select></label>
           </div>
         </section>
 
         <section class="control-section">
-          <h2>怨쇰ぉ/?깆쟻</h2>
+          <h2>과목/성적</h2>
           <div class="score-grid" id="scoreGrid"></div>
         </section>
 
         <section class="control-section">
-          <h2>寃??議곌굔</h2>
-          <label>鍮꾧탳 湲곗? ?뺤떆<select id="targetYear"></select></label>
-          <label>??숆텒??select id="tierFilter"></select></label>
+          <h2>검색 조건</h2>
+          <label>비교 기준 정시<select id="targetYear"></select></label>
+          <label>대학권역<select id="tierFilter"></select></label>
           <div class="field-grid two">
-            <label>???select id="universityFilter"></select></label>
-            <label>?숆낵 寃??input id="majorSearch" type="search" placeholder="?? 而댄벂?? 媛꾪샇, 寃쎌쁺" /></label>
+            <label>대학<select id="universityFilter"></select></label>
+            <label>학과 검색<input id="majorSearch" type="search" placeholder="예: 컴퓨터, 간호, 경영" /></label>
           </div>
           <div class="field-grid two">
-            <label>理쒖냼 ?⑷꺽瑜?input id="minChance" type="range" min="0" max="95" step="5" value="0" /></label>
-            <label>?뺣젹<select id="sortMode">
-              <option value="chance">?⑷꺽瑜??믪? ??/option>
-              <option value="reach">?곹뼢 吏????/option>
-              <option value="university">??숇챸 ??/option>
-              <option value="competition">寃쎌웳瑜???? ??/option>
+            <label>최소 합격률<input id="minChance" type="range" min="0" max="95" step="5" value="0" /></label>
+            <label>정렬<select id="sortMode">
+              <option value="chance">합격률 높은 순</option>
+              <option value="reach">상향 지원 순</option>
+              <option value="university">대학명 순</option>
+              <option value="competition">경쟁률 낮은 순</option>
             </select></label>
           </div>
-          <div class="range-line"><span id="minChanceText">0% ?댁긽</span><button id="resetButton" type="button">珥덇린??/button></div>
+          <div class="range-line"><span id="minChanceText">0% 이상</span><button id="resetButton" type="button">초기화</button></div>
         </section>
       </aside>
 
       <section class="results-panel">
         <header class="results-header">
           <div>
-            <p class="eyebrow">寃곌낵 ??쒕낫??/p>
-            <h2 id="resultTitle">?곗씠?곕? 遺덈윭?ㅻ뒗 以묒엯?덈떎</h2>
+            <p class="eyebrow">결과 대시보드</p>
+            <h2 id="resultTitle">데이터를 불러오는 중입니다</h2>
           </div>
-          <div class="source-pill warning-pill">?뺣? 寃利?以?/div>
+          <div class="source-pill warning-pill">정밀 검증 중</div>
         </header>
 
         <section class="accuracy-warning">
-          <strong>二쇱쓽</strong>
-          <span>?먮낯 ?묒???DB? VBA 怨꾩궛 ?쒖꽌瑜??곸슜?⑸땲?? ?먮낯 ?먯껜媛 ?섏젙?????덉쑝誘濡??ㅼ젣 吏???꾩뿉?????怨듭떇 ?낆떆?먮즺???④퍡 ?뺤씤?섏꽭??</span>
+          <strong>주의</strong>
+          <span>원본 엑셀의 DB와 VBA 계산 순서를 적용합니다. 원본 자체가 수정될 수 있으므로 실제 지원 전에는 대학 공식 입시자료도 함께 확인하세요.</span>
         </section>
 
         <section class="validation-panel" id="validationPanel">
           <div class="validation-head">
             <div>
-              <h3>?먮낯 ?묒? 寃利??꾪솴</h3>
-              <p id="validationSummary">寃利?由ы룷?몃? 遺덈윭?ㅻ뒗 以묒엯?덈떎.</p>
+              <h3>원본 엑셀 검증 현황</h3>
+              <p id="validationSummary">검증 리포트를 불러오는 중입니다.</p>
             </div>
-            <a
-              href="https://raw.githubusercontent.com/geekr2013/univ-admission-possibility/main/data/integrity.json"
-              target="_blank"
-              rel="noreferrer"
-            >寃利?JSON</a>
+            <a href="https://raw.githubusercontent.com/geekr2013/univ-admission-possibility/main/data/integrity.json" target="_blank" rel="noreferrer">검증 JSON</a>
           </div>
           <div class="validation-grid">
-            <div><span>?숈씪???먯젙</span><strong id="validationVerdict">?뺤씤 以?/strong></div>
-            <div><span>?먮낯 ?議?/span><strong id="validationAudit">-</strong></div>
-            <div><span>留ㅽ겕濡??뺤씤</span><strong id="validationMacro">-</strong></div>
-            <div><span>?곗씠??踰붿쐞</span><strong id="validationCoverage">-</strong></div>
+            <div><span>동일성 판정</span><strong id="validationVerdict">확인 중</strong></div>
+            <div><span>원본 대조</span><strong id="validationAudit">-</strong></div>
+            <div><span>매크로 확인</span><strong id="validationMacro">-</strong></div>
+            <div><span>데이터 범위</span><strong id="validationCoverage">-</strong></div>
           </div>
           <p class="validation-policy" id="validationPolicy"></p>
         </section>
 
         <section class="stats-row">
-          <div class="stat"><span>寃??寃곌낵</span><strong id="statCount">-</strong></div>
-          <div class="stat"><span>90% ?댁긽</span><strong id="statSafe">-</strong></div>
-          <div class="stat"><span>70% ?댁긽</span><strong id="statGood">-</strong></div>
-          <div class="stat"><span>愿?????/span><strong id="statUniversities">-</strong></div>
+          <div class="stat"><span>검색 결과</span><strong id="statCount">-</strong></div>
+          <div class="stat"><span>90% 이상</span><strong id="statSafe">-</strong></div>
+          <div class="stat"><span>70% 이상</span><strong id="statGood">-</strong></div>
+          <div class="stat"><span>관심 대학</span><strong id="statUniversities">-</strong></div>
         </section>
 
         <section class="visual-band">
           <div>
-            <h3>?⑷꺽瑜?遺꾪룷</h3>
+            <h3>합격률 분포</h3>
             <div class="bars" id="chanceBars"></div>
           </div>
           <div>
-            <h3>異붿쿇 ?댁꽍</h3>
+            <h3>추천 해석</h3>
             <ul id="insightList" class="insights"></ul>
           </div>
         </section>
 
         <section class="result-tools">
           <div class="tabs" id="chanceTabs">
-            <button type="button" data-min="0" class="active">?꾩껜</button>
-            <button type="button" data-min="90">?덉젙 90%+</button>
-            <button type="button" data-min="70">媛??70%+</button>
-            <button type="button" data-min="30">?꾩쟾 30%+</button>
+            <button type="button" data-min="0" class="active">전체</button>
+            <button type="button" data-min="90">안정 90%+</button>
+            <button type="button" data-min="70">가능 70%+</button>
+            <button type="button" data-min="30">도전 30%+</button>
           </div>
-          <label class="audit-filter">寃利??곹깭<select id="auditFilter">
-            <option value="all">?꾩껜</option>
-            <option value="verified">?먮낯 ?쇱튂</option>
-            <option value="close">?먮낯 洹쇱젒</option>
-            <option value="mismatch">?ㅼ감 ??/option>
-            <option value="unknown">寃利?遺덇?</option>
+          <label class="audit-filter">검증 상태<select id="auditFilter">
+            <option value="all">전체</option>
+            <option value="verified">원본 일치</option>
+            <option value="close">원본 근접</option>
+            <option value="mismatch">오차 큼</option>
+            <option value="unknown">검증 불가</option>
           </select></label>
           <div class="data-status">
             <span id="updatedText"></span>
-            <button id="refreshDataButton" type="button">?곗씠???ㅼ떆 ?쎄린</button>
+            <button id="refreshDataButton" type="button">데이터 다시 읽기</button>
           </div>
         </section>
 
@@ -134,9 +130,9 @@
           <select class="subject-select"></select>
         </div>
         <div class="field-grid three compact">
-          <label>?쒖?<input class="standard-input" type="number" min="0" max="200" /></label>
-          <label>諛깅텇??input class="percentile-input" type="number" min="0" max="100" /></label>
-          <label>?깃툒<input class="grade-input" type="number" min="1" max="9" /></label>
+          <label>표준<input class="standard-input" type="number" min="0" max="200" /></label>
+          <label>백분위<input class="percentile-input" type="number" min="0" max="100" /></label>
+          <label>등급<input class="grade-input" type="number" min="1" max="9" /></label>
         </div>
         <p class="range-hint"></p>
       </article>
