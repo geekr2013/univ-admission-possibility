@@ -1,6 +1,8 @@
 # 자동 업데이트 설정
 
-이 앱은 GitHub Actions로 하루 1회 원본 데이터를 다시 받아 무료 GitHub Pages에 배포합니다.
+이 앱은 GitHub Actions로 하루 1회 원본 데이터와 검증 결과를 갱신합니다. 공개 사이트는 GitHub의 최신 데이터를 직접 읽습니다.
+
+- 공개 사이트: https://violet-sun-violet.pagey.site/
 
 ## 실행 시간
 
@@ -10,9 +12,9 @@
 
 ## 노트북 전원
 
-GitHub Actions와 Vercel에서 실행되므로 노트북이 꺼져 있어도 작동합니다.
+GitHub Actions와 공개 호스팅 서버에서 실행되므로 노트북이 꺼져 있어도 작동합니다.
 
-별도 유료 서비스나 Secret 등록이 필요하지 않습니다.
+별도 유료 서비스나 Secret 등록이 필요하지 않습니다. 화면의 `데이터 다시 읽기` 버튼으로 최신 GitHub 데이터를 즉시 다시 불러올 수도 있습니다.
 
 ## 배치 결과물
 
