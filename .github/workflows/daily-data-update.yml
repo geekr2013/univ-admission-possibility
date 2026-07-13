@@ -57,7 +57,7 @@ jobs:
           response_file="$RUNNER_TEMP/pagey-response.json"
           http_code=$(curl --silent --show-error \
             --request POST "https://pagey.site/api/public/sites/" \
-            --form "file=@artifacts/univ-admission-standalone.html;type=text/html" \
+            --form "file=@artifacts/univ-admission-standalone.html;filename=index.html;type=text/html" \
             --form "title=University Admission Possibility" \
             --output "$response_file" \
             --write-out "%{http_code}")
