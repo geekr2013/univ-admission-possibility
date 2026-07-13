@@ -1,6 +1,9 @@
 .source-data/
 .codex/pytools/
 .analysis/
+.pagedrop.json
+artifacts/
+sites-deploy/
 node_modules/
 dist/
 .vercel/
